@@ -2,8 +2,9 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev --turbopack",
-    "start": "next start"
+    "dev": "next dev -p 8000 --turbopack",
+    "start": "next start",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -24,6 +25,8 @@
     "@types/node": "^22",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
