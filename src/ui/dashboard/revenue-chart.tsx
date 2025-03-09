@@ -1,4 +1,4 @@
-import { Revenue } from "../../lib/definitions";
+import { Revenue } from "@/lib/definitions";
 import { lusitana } from "../fonts";
 
 // This component is representational only.

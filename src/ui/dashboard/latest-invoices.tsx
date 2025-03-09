@@ -1,5 +1,5 @@
+import { LatestInvoice } from "@/lib/definitions";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
-import { LatestInvoice } from "../../lib/definitions";
 import { lusitana } from "../fonts";
 export default async function LatestInvoices({
   latestInvoices,
