@@ -18,6 +18,7 @@
 # misc
 .DS_Store
 *.pem
+db.sqlite3*
 
 # debug
 npm-debug.log*
