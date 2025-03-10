@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "npx prisma migrate deploy && next build",
+    "build": "npx prisma generate && npx prisma migrate deploy && next build",
     "dev": "next dev -p 8000 --turbopack",
     "start": "next start",
     "prettier": "prettier --write ."
