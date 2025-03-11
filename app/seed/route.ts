@@ -74,14 +74,12 @@ async function seedRevenue() {
 export async function GET() {
   try {
     // Clear existing data first
-    await prisma.$transaction(
-      [
-        prisma.invoices.deleteMany(),
-        prisma.revenue.deleteMany(),
-        prisma.customers.deleteMany(),
-        prisma.users.deleteMany(),
-      ]
-    );
+    await prisma.$transaction([
+      prisma.invoices.deleteMany(),
+      prisma.revenue.deleteMany(),
+      prisma.customers.deleteMany(),
+      prisma.users.deleteMany(),
+    ]);
 
     await seedUsers();
     await seedCustomers();
