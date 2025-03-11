@@ -1,3 +1,4 @@
+import { InvoiceStatus } from "@prisma/client";
 import { prisma } from "./prisma";
 import { formatCurrency } from "./utils";
 
@@ -116,7 +117,16 @@ export async function fetchFilteredInvoices(
               equals: isNaN(Number(query)) ? undefined : Number(query),
             },
           },
-          { status: { equals: query.toLowerCase() as "paid" | "pending" } },
+          {
+            status: {
+              equals:
+                query.toLowerCase() === "paid"
+                  ? InvoiceStatus.paid
+                  : query.toLowerCase() === "pending"
+                    ? InvoiceStatus.pending
+                    : undefined,
+            },
+          },
         ],
       },
       orderBy: {
@@ -154,9 +164,9 @@ export async function fetchInvoicesPages(query: string) {
             status: {
               equals:
                 query.toLowerCase() === "paid"
-                  ? "paid"
+                  ? InvoiceStatus.paid
                   : query.toLowerCase() === "pending"
-                    ? "pending"
+                    ? InvoiceStatus.pending
                     : undefined,
             },
           },

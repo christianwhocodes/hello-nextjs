@@ -1,11 +1,11 @@
-import CardWrapper from "@/components/dashboard/cards";
-import LatestInvoices from "@/components/dashboard/latest-invoices";
-import RevenueChart from "@/components/dashboard/revenue-chart";
+import CardWrapper from "@/app/components/dashboard/cards";
+import LatestInvoices from "@/app/components/dashboard/latest-invoices";
+import RevenueChart from "@/app/components/dashboard/revenue-chart";
 import {
   CardsSkeleton,
   LatestInvoicesSkeleton,
   RevenueChartSkeleton,
-} from "@/components/skeletons";
+} from "@/app/components/skeletons";
 import { lusitana } from "@/lib/fonts";
 import { Suspense } from "react";
 
