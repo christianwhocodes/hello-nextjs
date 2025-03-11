@@ -7,6 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum InvoiceStatus {
+  paid
+  pending
+}
+
 model customers {
   id        String     @id @default(uuid())
   name      String
@@ -16,12 +21,12 @@ model customers {
 }
 
 model invoices {
-  id          String    @id @default(uuid())
+  id          String        @id @default(uuid())
   customer_id String
   amount      Int
-  status      String
+  status      InvoiceStatus @default(pending)
   date        DateTime
-  customer    customers @relation(fields: [customer_id], references: [id])
+  customer    customers     @relation(fields: [customer_id], references: [id])
 }
 
 model revenue {

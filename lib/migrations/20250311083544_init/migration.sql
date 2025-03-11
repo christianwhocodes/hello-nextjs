@@ -1,3 +1,6 @@
+-- CreateEnum
+CREATE TYPE "InvoiceStatus" AS ENUM ('paid', 'pending');
+
 -- CreateTable
 CREATE TABLE "customers" (
     "id" TEXT NOT NULL,
@@ -13,7 +16,7 @@ CREATE TABLE "invoices" (
     "id" TEXT NOT NULL,
     "customer_id" TEXT NOT NULL,
     "amount" INTEGER NOT NULL,
-    "status" TEXT NOT NULL,
+    "status" "InvoiceStatus" NOT NULL DEFAULT 'pending',
     "date" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "invoices_pkey" PRIMARY KEY ("id")

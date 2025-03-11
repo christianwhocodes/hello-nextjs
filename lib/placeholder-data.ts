@@ -1,6 +1,14 @@
 // This file contains placeholder data that you'll be replacing with real data in the Data Fetching chapter:
 // https://nextjs.org/learn/dashboard-app/fetching-data
-const users = [
+
+import type {
+  customers as Customer,
+  invoices as Invoice,
+  revenue as Revenue,
+  users as User,
+} from "@prisma/client";
+
+const users: User[] = [
   {
     id: "410544b2-4001-4271-9855-fec4b6a6442a",
     name: "User",
@@ -9,7 +17,7 @@ const users = [
   },
 ];
 
-const customers = [
+const customers: Customer[] = [
   {
     id: "d6e15727-9fe1-4961-8c5b-ea44a9bd81aa",
     name: "Evil Rabbit",
@@ -48,88 +56,101 @@ const customers = [
   },
 ];
 
-const invoices = [
+const invoices: Invoice[] = [
   {
+    id: "INV001",
     customer_id: customers[0].id,
     amount: 15795,
     status: "pending",
-    date: "2022-12-06",
+    date: new Date("2022-12-06"),
   },
   {
+    id: "INV002",
     customer_id: customers[1].id,
     amount: 20348,
     status: "pending",
-    date: "2022-11-14",
+    date: new Date("2022-11-14"),
   },
   {
+    id: "INV003",
     customer_id: customers[4].id,
     amount: 3040,
     status: "paid",
-    date: "2022-10-29",
+    date: new Date("2022-10-29"),
   },
   {
+    id: "INV004",
     customer_id: customers[3].id,
     amount: 44800,
     status: "paid",
-    date: "2023-09-10",
+    date: new Date("2023-09-10"),
   },
   {
+    id: "INV005",
     customer_id: customers[5].id,
     amount: 34577,
     status: "pending",
-    date: "2023-08-05",
+    date: new Date("2023-08-05"),
   },
   {
+    id: "INV006",
     customer_id: customers[2].id,
     amount: 54246,
     status: "pending",
-    date: "2023-07-16",
+    date: new Date("2023-07-16"),
   },
   {
+    id: "INV007",
     customer_id: customers[0].id,
     amount: 666,
     status: "pending",
-    date: "2023-06-27",
+    date: new Date("2023-06-27"),
   },
   {
+    id: "INV008",
     customer_id: customers[3].id,
     amount: 32545,
     status: "paid",
-    date: "2023-06-09",
+    date: new Date("2023-06-09"),
   },
   {
+    id: "INV009",
     customer_id: customers[4].id,
     amount: 1250,
     status: "paid",
-    date: "2023-06-17",
+    date: new Date("2023-06-17"),
   },
   {
+    id: "INV010",
     customer_id: customers[5].id,
     amount: 8546,
     status: "paid",
-    date: "2023-06-07",
+    date: new Date("2023-06-07"),
   },
   {
+    id: "INV011",
     customer_id: customers[1].id,
     amount: 500,
     status: "paid",
-    date: "2023-08-19",
+    date: new Date("2023-08-19"),
   },
   {
+    id: "INV012",
     customer_id: customers[5].id,
     amount: 8945,
     status: "paid",
-    date: "2023-06-03",
+    date: new Date("2023-06-03"),
   },
   {
+    id: "INV013",
     customer_id: customers[2].id,
     amount: 1000,
     status: "paid",
-    date: "2022-06-05",
+    date: new Date("2022-06-05"),
   },
 ];
 
-const revenue = [
+const revenue: Revenue[] = [
   { month: "Jan", revenue: 2000 },
   { month: "Feb", revenue: 1800 },
   { month: "Mar", revenue: 2200 },

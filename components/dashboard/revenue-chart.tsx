@@ -1,6 +1,5 @@
 import { CalendarIcon } from "@heroicons/react/24/solid";
 import { fetchRevenue } from "../../lib/data";
-import { Revenue } from "../../lib/definitions";
 import { lusitana } from "../../lib/fonts";
 import { generateYAxis } from "../../lib/utils";
 
@@ -11,7 +10,7 @@ import { generateYAxis } from "../../lib/utils";
 // https://airbnb.io/visx/
 
 export default async function RevenueChart() {
-  const revenue: Revenue[] = await fetchRevenue(); // Fetch data inside the component
+  const revenue = await fetchRevenue(); // Fetch data inside the component
 
   const chartHeight = 350;
   // NOTE: Uncomment this code in Chapter 7

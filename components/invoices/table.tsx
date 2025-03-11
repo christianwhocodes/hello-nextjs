@@ -37,7 +37,7 @@ export default async function InvoicesTable({
                     </div>
                     <p className="text-sm text-gray-500">{invoice.email}</p>
                   </div>
-                  <InvoiceStatus status={invoice.status} />
+                  <InvoiceStatus status={invoice.status || "pending"} />
                 </div>
                 <div className="flex w-full items-center justify-between pt-4">
                   <div>
@@ -105,7 +105,7 @@ export default async function InvoicesTable({
                     {formatDateToLocal(invoice.date)}
                   </td>
                   <td className="px-3 py-3 whitespace-nowrap">
-                    <InvoiceStatus status={invoice.status} />
+                    <InvoiceStatus status={invoice.status || "pending"} />
                   </td>
                   <td className="py-3 pr-3 pl-6 whitespace-nowrap">
                     <div className="flex justify-end gap-3">

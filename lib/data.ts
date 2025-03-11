@@ -116,7 +116,7 @@ export async function fetchFilteredInvoices(
               equals: isNaN(Number(query)) ? undefined : Number(query),
             },
           },
-          { status: { contains: query, mode: "insensitive" } },
+          { status: { equals: query.toLowerCase() as "paid" | "pending" } },
         ],
       },
       orderBy: {
@@ -150,7 +150,16 @@ export async function fetchInvoicesPages(query: string) {
               equals: isNaN(Number(query)) ? undefined : Number(query),
             },
           },
-          { status: { contains: query, mode: "insensitive" } },
+          {
+            status: {
+              equals:
+                query.toLowerCase() === "paid"
+                  ? "paid"
+                  : query.toLowerCase() === "pending"
+                    ? "pending"
+                    : undefined,
+            },
+          },
         ],
       },
     });

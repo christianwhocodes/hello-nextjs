@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "lint":"tsc --noEmit",
     "build": "npx prisma generate && npx prisma migrate deploy && next build",
     "dev": "next dev -p 8000 --turbopack",
     "start": "next start",
@@ -32,6 +33,6 @@
     "typescript": "^5"
   },
   "prisma": {
-    "schema": "src/lib/schema.prisma"
+    "schema": "lib/schema.prisma"
   }
 }

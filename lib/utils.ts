@@ -1,4 +1,4 @@
-import { Revenue } from "./definitions";
+import type { revenue } from "@prisma/client";
 
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString("en-US", {
@@ -8,10 +8,10 @@ export const formatCurrency = (amount: number) => {
 };
 
 export const formatDateToLocal = (
-  dateStr: string,
+  dateStr: string | Date,
   locale: string = "en-US",
 ) => {
-  const date = new Date(dateStr);
+  const date = dateStr instanceof Date ? dateStr : new Date(dateStr);
   const options: Intl.DateTimeFormatOptions = {
     day: "numeric",
     month: "short",
@@ -21,7 +21,7 @@ export const formatDateToLocal = (
   return formatter.format(date);
 };
 
-export const generateYAxis = (revenue: Revenue[]) => {
+export const generateYAxis = (revenue: revenue[]) => {
   // Calculate what labels we need to display on the y-axis
   // based on highest record and in 1000s
   const yAxisLabels = [];
