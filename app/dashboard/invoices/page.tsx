@@ -1,8 +1,8 @@
-import { CreateInvoice } from "@/app/components/invoices/buttons";
-import Pagination from "@/app/components/invoices/pagination";
-import Table from "@/app/components/invoices/table";
-import Search from "@/app/components/search";
-import { InvoicesTableSkeleton } from "@/app/components/skeletons";
+import Search from "@/lib/search";
+import { InvoicesTableSkeleton } from "@/lib/skeletons";
+import { CreateInvoice } from "@/lib/dashboard/invoices/buttons";
+import Pagination from "@/lib/dashboard/invoices/pagination";
+import Table from "@/lib/dashboard/invoices/table";
 import { fetchInvoicesPages } from "@/lib/data";
 import { lusitana } from "@/lib/fonts";
 import { Suspense } from "react";
