@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "prettier": "prettier --write .",
-    "lint": "tsc --noEmit",
+    "lint": "next lint",
     "dev": "next dev -p 8000 --turbopack",
     "build": "npx prisma generate && npx prisma migrate deploy && next build",
     "start": "next start"
@@ -26,6 +26,8 @@
     "@types/node": "^22",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "eslint": "9.22.0",
+    "eslint-config-next": "15.2.2",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "prisma": "^6.5.0",
