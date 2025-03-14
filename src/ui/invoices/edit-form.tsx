@@ -1,7 +1,7 @@
 "use client";
 
-import { State, updateInvoice } from "@/utils/actions";
-import { CustomerField, InvoiceForm } from "@/utils/definitions";
+import { State, updateInvoice } from "@/lib/actions";
+import { CustomerField, InvoiceForm } from "@/lib/definitions";
 import {
   CheckIcon,
   ClockIcon,

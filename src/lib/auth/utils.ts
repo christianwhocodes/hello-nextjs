@@ -1,12 +1,33 @@
-import { authConfig } from "@/auth.config";
-import { prisma } from "@/db/connection";
-import { hashCompare } from "@/utils/helpers";
+import { prisma } from "@/lib/prisma";
 import type { users as User } from "@prisma/client";
+import { pbkdf2Sync, randomBytes, timingSafeEqual } from "crypto";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
+import { authConfig } from "./config";
+
+export function hash(suppliedString: string): string {
+  const salt = randomBytes(16).toString("hex");
+  const hash = pbkdf2Sync(suppliedString, salt, 1000, 64, "sha512").toString(
+    "hex",
+  );
+  return `${salt}:${hash}`;
+}
+
+function hashCompare(storedHash: string, suppliedString: string): boolean {
+  const [salt, hash] = storedHash.split(":");
+  const suppliedHash = pbkdf2Sync(
+    suppliedString,
+    salt,
+    1000,
+    64,
+    "sha512",
+  ).toString("hex");
+  return timingSafeEqual(Buffer.from(hash), Buffer.from(suppliedHash));
+}
 
 async function getUser(email: string): Promise<User | undefined> {
+  // * This isn't used in a client component, hence not in data.ts
   try {
     const user = await prisma.users.findMany({
       where: { email },
@@ -18,7 +39,7 @@ async function getUser(email: string): Promise<User | undefined> {
   }
 }
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({

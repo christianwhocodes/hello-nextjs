@@ -1,5 +1,7 @@
-import { prisma } from "@/db/connection";
-import { formatCurrency } from "@/utils/helpers";
+// * To be used in client components
+
+import { prisma } from "@/lib/prisma";
+import { formatCurrency } from "@/lib/utils";
 import { InvoiceStatus } from "@prisma/client";
 
 export async function fetchRevenue() {

@@ -1,6 +1,6 @@
 "use client";
 
-import { authenticate } from "@/utils/actions";
+import { authenticate } from "@/lib/auth/actions";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { AtSymbolIcon, KeyIcon } from "@heroicons/react/24/outline";
 import { ExclamationCircleIcon } from "@heroicons/react/24/solid";

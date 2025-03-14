@@ -1,9 +1,9 @@
 // app/data/route.ts
 
-import { prisma } from "@/db/connection";
-import { customers, invoices, revenue, users } from "@/db/placeholder-data";
-import { hash } from "@/utils/helpers";
+import { hash } from "@/lib/auth/utils";
+import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
+import { customers, invoices, revenue, users } from "./placeholder-data";
 
 async function seedUsers() {
   const insertedUsers = await Promise.all(

@@ -1,5 +1,4 @@
 import type { revenue } from "@prisma/client";
-import { pbkdf2Sync, randomBytes, timingSafeEqual } from "crypto";
 
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString("en-US", {
@@ -68,26 +67,3 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
-
-export function hash(suppliedString: string): string {
-  const salt = randomBytes(16).toString("hex");
-  const hash = pbkdf2Sync(suppliedString, salt, 1000, 64, "sha512").toString(
-    "hex",
-  );
-  return `${salt}:${hash}`;
-}
-
-export function hashCompare(
-  storedHash: string,
-  suppliedString: string,
-): boolean {
-  const [salt, hash] = storedHash.split(":");
-  const suppliedHash = pbkdf2Sync(
-    suppliedString,
-    salt,
-    1000,
-    64,
-    "sha512",
-  ).toString("hex");
-  return timingSafeEqual(Buffer.from(hash), Buffer.from(suppliedHash));
-}
