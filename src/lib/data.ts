@@ -1,5 +1,7 @@
 // * To be used in client components
 
+"use server";
+
 import { prisma } from "@/lib/prisma";
 import { formatCurrency } from "@/lib/utils";
 import { InvoiceStatus } from "@prisma/client";
