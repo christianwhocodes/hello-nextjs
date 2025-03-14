@@ -35,6 +35,6 @@
     "typescript": "^5"
   },
   "prisma": {
-    "schema": "lib/schema.prisma"
+    "schema": "src/prisma/schema.prisma"
   }
 }
