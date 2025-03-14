@@ -1,5 +1,5 @@
 import { prisma } from "@/db/connection";
-import { authConfig } from "@/middleware";
+import { authConfig } from "@/auth.config";
 import type { revenue, users as User } from "@prisma/client";
 import { pbkdf2Sync, randomBytes, timingSafeEqual } from "crypto";
 import NextAuth from "next-auth";
