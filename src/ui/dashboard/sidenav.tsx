@@ -1,4 +1,4 @@
-import { signOut } from "@/utils/helpers";
+import { signOut } from "@/utils/auth";
 import { PowerIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import AcmeLogo from "../acme-logo";

@@ -2,13 +2,13 @@
 
 import { prisma } from "@/db/connection";
 import { customers, invoices, revenue, users } from "@/db/placeholder-data";
-import { hashPassword } from "@/utils/helpers";
+import { hash } from "@/utils/helpers";
 import { notFound } from "next/navigation";
 
 async function seedUsers() {
   const insertedUsers = await Promise.all(
     users.map(async (user) => {
-      const hashedPassword = hashPassword(user.password);
+      const hashedPassword = hash(user.password);
       return prisma.users.upsert({
         where: { id: user.id },
         update: {},
