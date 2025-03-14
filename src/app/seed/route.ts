@@ -1,12 +1,14 @@
+// app/data/route.ts
+
 import { prisma } from "@/db/connection";
 import { customers, invoices, revenue, users } from "@/db/placeholder-data";
-import bcrypt from "bcrypt";
+import { hashPassword } from "@/utils/helpers";
 import { notFound } from "next/navigation";
 
 async function seedUsers() {
   const insertedUsers = await Promise.all(
     users.map(async (user) => {
-      const hashedPassword = await bcrypt.hash(user.password, 10);
+      const hashedPassword = hashPassword(user.password);
       return prisma.users.upsert({
         where: { id: user.id },
         update: {},

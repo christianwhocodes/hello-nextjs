@@ -1,1 +1,1 @@
-GET http://localhost:8000/seed HTTP/1.1
+GET http://localhost:3000/seed HTTP/1.1

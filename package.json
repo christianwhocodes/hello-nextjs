@@ -8,9 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@auth/core": "^0.38.0",
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.5.0",
-    "bcrypt": "^5.1.1",
     "clsx": "^2.1.1",
     "next": "^15",
     "next-auth": "^5.0.0-beta.25",
@@ -22,7 +22,6 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4",
-    "@types/bcrypt": "^5.0.2",
     "@types/node": "^22",
     "@types/react": "latest",
     "@types/react-dom": "latest",

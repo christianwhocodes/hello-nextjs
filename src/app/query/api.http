@@ -1,1 +1,1 @@
-GET http://localhost:8000/query HTTP/1.1
+GET http://localhost:3000/query HTTP/1.1
