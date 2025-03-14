@@ -8,7 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@auth/core": "^0.38.0",
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.5.0",
     "clsx": "^2.1.1",
