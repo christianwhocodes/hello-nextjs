@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useActionState } from "react";
-import { Button } from "../../button";
+import { Button } from "../button";
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   const initialState: State = { message: null, errors: {} };
@@ -135,9 +135,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
         </fieldset>
         <div id="form-error" aria-live="polite" aria-atomic="true">
           {state.message && (
-            <p className="mt-2 text-sm text-red-500">
-              {state.message}
-            </p>
+            <p className="mt-2 text-sm text-red-500">{state.message}</p>
           )}
         </div>
       </div>

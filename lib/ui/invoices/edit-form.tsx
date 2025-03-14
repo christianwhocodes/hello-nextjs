@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useActionState } from "react";
-import { Button } from "../../button";
+import { Button } from "../button";
 
 export default function EditInvoiceForm({
   invoice,
