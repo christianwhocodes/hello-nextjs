@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { fetchFilteredInvoices } from "../../lib/data";
-import { formatCurrency, formatDateToLocal } from "../../lib/utils";
+import { fetchFilteredInvoices } from "../../db/fetch";
+import { formatCurrency, formatDateToLocal } from "../../utils/helpers";
 import { DeleteInvoice, UpdateInvoice } from "./buttons";
 import InvoiceStatus from "./status";
 

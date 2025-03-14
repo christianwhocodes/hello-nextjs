@@ -1,4 +1,5 @@
-import { prisma } from "@/prisma";
+import { prisma } from "@/db/connection";
+import { notFound } from "next/navigation";
 
 async function listInvoices() {
   const data = await prisma.invoices.findMany({
@@ -22,6 +23,10 @@ async function listInvoices() {
 }
 
 export async function GET() {
+  if (process.env.NODE_ENV === "production") {
+    return notFound();
+  }
+
   try {
     return Response.json(await listInvoices());
   } catch (error) {

@@ -1,4 +1,4 @@
-import { fetchInvoicesPages } from "@/lib/data";
+import { fetchInvoicesPages } from "@/db/fetch";
 import { lusitana } from "@/ui/fonts";
 import { CreateInvoice } from "@/ui/invoices/buttons";
 import Pagination from "@/ui/invoices/pagination";

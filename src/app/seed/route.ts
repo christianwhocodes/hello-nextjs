@@ -1,6 +1,7 @@
-import { customers, invoices, revenue, users } from "@/lib/placeholder-data";
-import { prisma } from "@/prisma";
+import { prisma } from "@/db/connection";
+import { customers, invoices, revenue, users } from "@/db/placeholder-data";
 import bcrypt from "bcrypt";
+import { notFound } from "next/navigation";
 
 async function seedUsers() {
   const insertedUsers = await Promise.all(
@@ -72,6 +73,10 @@ async function seedRevenue() {
 }
 
 export async function GET() {
+  if (process.env.NODE_ENV === "production") {
+    return notFound();
+  }
+
   try {
     // Clear existing data first
     await prisma.$transaction([

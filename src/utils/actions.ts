@@ -1,7 +1,7 @@
 "use server";
 
-import { signIn } from "@/auth";
-import { prisma } from "@/prisma";
+import { prisma } from "@/db/connection";
+import { signIn } from "@/utils/auth";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

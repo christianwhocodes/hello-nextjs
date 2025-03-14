@@ -1,5 +1,5 @@
-import { authConfig } from "@/auth.config";
-import { prisma } from "@/prisma";
+import { prisma } from "@/db/connection";
+import { authConfig } from "@/middleware";
 import type { users as User } from "@prisma/client";
 import bcrypt from "bcrypt";
 import NextAuth from "next-auth";
