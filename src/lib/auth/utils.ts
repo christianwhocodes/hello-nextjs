@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { db } from "@/lib/prisma/connection";
 import type { users as User } from "@prisma/client";
 import { pbkdf2Sync, randomBytes, timingSafeEqual } from "crypto";
 import NextAuth from "next-auth";
@@ -29,7 +29,7 @@ function hashCompare(storedHash: string, suppliedString: string): boolean {
 async function getUser(email: string): Promise<User | undefined> {
   // * This isn't used in a client component, hence not in data.ts
   try {
-    const user = await prisma.users.findMany({
+    const user = await db.users.findMany({
       where: { email },
     });
     return user[0];

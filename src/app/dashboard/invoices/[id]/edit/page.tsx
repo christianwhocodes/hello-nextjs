@@ -1,4 +1,4 @@
-import { fetchCustomers, fetchInvoiceById } from "@/lib/data";
+import { fetchCustomers, fetchInvoiceById } from "@/lib/requests";
 import Breadcrumbs from "@/ui/invoices/breadcrumbs";
 import Form from "@/ui/invoices/edit-form";
 import { Metadata } from "next";

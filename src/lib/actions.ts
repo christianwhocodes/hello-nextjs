@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
+import { db } from "@/lib/prisma/connection";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -53,7 +53,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
   const date = new Date().toISOString();
 
   try {
-    await prisma.invoices.create({
+    await db.invoices.create({
       data: {
         customer_id: customerId,
         amount: amountInCents,
@@ -91,7 +91,7 @@ export async function updateInvoice(
   const amountInCents = amount * 100;
 
   try {
-    await prisma.invoices.update({
+    await db.invoices.update({
       where: { id },
       data: {
         customer_id: customerId,
@@ -108,7 +108,7 @@ export async function updateInvoice(
 }
 
 export async function deleteInvoice(id: string) {
-  await prisma.invoices.delete({
+  await db.invoices.delete({
     where: { id },
   });
   revalidatePath("/dashboard/invoices");

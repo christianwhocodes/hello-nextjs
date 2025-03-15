@@ -1,4 +1,4 @@
-import { fetchCustomers } from "@/lib/data";
+import { fetchCustomers } from "@/lib/requests";
 import Breadcrumbs from "@/ui/invoices/breadcrumbs";
 import Form from "@/ui/invoices/create-form";
 import { Metadata } from "next";

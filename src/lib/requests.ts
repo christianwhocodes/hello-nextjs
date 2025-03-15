@@ -2,7 +2,7 @@
 
 "use server";
 
-import { prisma } from "@/lib/prisma";
+import { db } from "@/lib/prisma/connection";
 import { formatCurrency } from "@/lib/utils";
 import { InvoiceStatus } from "@prisma/client";
 
@@ -14,7 +14,7 @@ export async function fetchRevenue() {
     console.log("Fetching revenue data...");
     await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    const data = await prisma.revenue.findMany();
+    const data = await db.revenue.findMany();
 
     console.log("Data fetch completed after 3 seconds.");
 
@@ -27,7 +27,7 @@ export async function fetchRevenue() {
 
 export async function fetchLatestInvoices() {
   try {
-    const data = await prisma.invoices.findMany({
+    const data = await db.invoices.findMany({
       select: {
         amount: true,
         id: true,
@@ -61,9 +61,9 @@ export async function fetchLatestInvoices() {
 
 export async function fetchCardData() {
   try {
-    const invoiceCountPromise = prisma.invoices.count();
-    const customerCountPromise = prisma.customers.count();
-    const invoiceStatusPromise = prisma.invoices.aggregate({
+    const invoiceCountPromise = db.invoices.count();
+    const customerCountPromise = db.customers.count();
+    const invoiceStatusPromise = db.invoices.aggregate({
       _sum: {
         amount: true,
       },
@@ -98,7 +98,7 @@ export async function fetchFilteredInvoices(
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
-    const invoices = await prisma.invoices.findMany({
+    const invoices = await db.invoices.findMany({
       select: {
         id: true,
         amount: true,
@@ -154,7 +154,7 @@ export async function fetchFilteredInvoices(
 
 export async function fetchInvoicesPages(query: string) {
   try {
-    const count = await prisma.invoices.count({
+    const count = await db.invoices.count({
       where: {
         OR: [
           { customer: { name: { contains: query, mode: "insensitive" } } },
@@ -187,7 +187,7 @@ export async function fetchInvoicesPages(query: string) {
 
 export async function fetchInvoiceById(id: string) {
   try {
-    const invoice = await prisma.invoices.findUnique({
+    const invoice = await db.invoices.findUnique({
       where: { id },
       select: {
         id: true,
@@ -211,7 +211,7 @@ export async function fetchInvoiceById(id: string) {
 
 export async function fetchCustomers() {
   try {
-    const customers = await prisma.customers.findMany({
+    const customers = await db.customers.findMany({
       select: {
         id: true,
         name: true,
@@ -230,7 +230,7 @@ export async function fetchCustomers() {
 
 export async function fetchFilteredCustomers(query: string) {
   try {
-    const customers = await prisma.customers.findMany({
+    const customers = await db.customers.findMany({
       where: {
         OR: [
           { name: { contains: query, mode: "insensitive" } },

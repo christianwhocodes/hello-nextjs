@@ -1,15 +1,15 @@
 // app/data/route.ts
 
 import { hash } from "@/lib/auth/utils";
-import { prisma } from "@/lib/prisma";
+import { db } from "@/lib/prisma/connection";
+import { customers, invoices, revenue, users } from "@/lib/prisma/fixtures";
 import { notFound } from "next/navigation";
-import { customers, invoices, revenue, users } from "./placeholder-data";
 
 async function seedUsers() {
   const insertedUsers = await Promise.all(
     users.map(async (user) => {
       const hashedPassword = hash(user.password);
-      return prisma.users.upsert({
+      return db.users.upsert({
         where: { id: user.id },
         update: {},
         create: {
@@ -27,7 +27,7 @@ async function seedUsers() {
 async function seedCustomers() {
   const insertedCustomers = await Promise.all(
     customers.map((customer) =>
-      prisma.customers.upsert({
+      db.customers.upsert({
         where: { id: customer.id },
         update: {},
         create: {
@@ -45,7 +45,7 @@ async function seedCustomers() {
 async function seedInvoices() {
   const insertedInvoices = await Promise.all(
     invoices.map((invoice) =>
-      prisma.invoices.create({
+      db.invoices.create({
         data: {
           customer_id: invoice.customer_id,
           amount: invoice.amount,
@@ -61,7 +61,7 @@ async function seedInvoices() {
 async function seedRevenue() {
   const insertedRevenue = await Promise.all(
     revenue.map((rev) =>
-      prisma.revenue.upsert({
+      db.revenue.upsert({
         where: { month: rev.month },
         update: {},
         create: {
@@ -81,11 +81,11 @@ export async function GET() {
 
   try {
     // Clear existing data first
-    await prisma.$transaction([
-      prisma.invoices.deleteMany(),
-      prisma.revenue.deleteMany(),
-      prisma.customers.deleteMany(),
-      prisma.users.deleteMany(),
+    await db.$transaction([
+      db.invoices.deleteMany(),
+      db.revenue.deleteMany(),
+      db.customers.deleteMany(),
+      db.users.deleteMany(),
     ]);
 
     await seedUsers();

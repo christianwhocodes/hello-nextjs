@@ -1,5 +1,5 @@
 import { CalendarIcon } from "@heroicons/react/24/solid";
-import { fetchRevenue } from "../../lib/data";
+import { fetchRevenue } from "../../lib/requests";
 import { generateYAxis } from "../../lib/utils";
 import { lusitana } from "../fonts";
 
